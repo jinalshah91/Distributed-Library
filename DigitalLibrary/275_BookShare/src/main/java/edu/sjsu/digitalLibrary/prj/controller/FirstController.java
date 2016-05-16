@@ -628,7 +628,7 @@ public class FirstController {
 		} catch (Exception e) {
 			System.out.println("Exception in FirstController " + e.getMessage());
 			e.printStackTrace();
-			return new ModelAndView("signup", "userdetails", userModel1);
+			return new ModelAndView("home");
 		}
 	}
 
@@ -666,8 +666,8 @@ public class FirstController {
 			
 		}else{
 			
-			InventoryScheduler n = new InventoryScheduler();
-			n.checkUserCreditScore();
+			//InventoryScheduler n = new InventoryScheduler();
+			//n.checkUserCreditScore();
 			JPAUserDAO jp = new JPAUserDAO();
 			
 		/////check for recommendations
@@ -704,9 +704,9 @@ public class FirstController {
     			MongoBook bookDetails =  bookTemp.searchBooksInDBByID(String.valueOf(userbasedRecommBookIds.get(i)));
     			recommendedForUser.add(bookDetails);
     		}
-    		
-    		httpSession.setAttribute("recommendedForUser", recommendedForUser);
-    		httpSession.setAttribute("recommCatBooks", recommCatBooks);
+    		System.out.println("size ********************** " + recommendedForUser.size());
+    		httpSession.setAttribute("recommCatBooks", recommendedForUser);
+    		httpSession.setAttribute("recommendedForYou", recommCatBooks);
 			
 			
 		}
